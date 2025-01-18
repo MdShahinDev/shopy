@@ -3,5 +3,8 @@
 body {
     @apply font-outfit; 
   }
+  a.active hr{
+    display: block;
+  }
 @tailwind components;
 @tailwind utilities;

@@ -1,10 +1,48 @@
-import React from 'react'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
+import Compare from "./Pages/Compare";
+import Confirm from "./Pages/Confirm";
+import Contact from "./Pages/Contact";
+import Faqs from "./Pages/Faqs";
+import Login from "./Pages/Login";
+import MyAccount from "./Pages/MyAccount";
+import Product from "./Pages/Product";
+import Register from "./Pages/Register";
+import Search from "./Pages/Search";
+import Shop from "./Pages/Shop";
+import TermsAndConditions from "./Pages/TermsAndConditions";
+import Wishlist from "./Pages/Wishlist";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 const App = () => {
   return (
-    <>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/compre" element={<Compare />} />
+        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/faqs" element={<Faqs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/my-account" element={<MyAccount />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;

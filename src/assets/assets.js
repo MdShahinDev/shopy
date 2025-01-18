@@ -79,11 +79,13 @@ import p_img68_2 from "./p_img68_2.jpg";
 import p_img69 from "./p_img69.jpg";
 import p_img70 from "./p_img70.jpg";
 import p_img71 from "./p_img71.jpg";
-
+import banner from "./Banner.jpg";
 import logo from "./logo.png";
-
+import banner2 from './Banner-2.jpg';
 export const assets = {
   logo,
+  banner,
+  banner2,
 };
 
 export const products = [
