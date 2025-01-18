@@ -16,6 +16,9 @@ export default {
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'], 
       },
+      backgroundImage: {
+        'promoBanner': "url('/src/assets/promotionalBanner.jpg')",
+      }
     },
   },
   plugins: [],

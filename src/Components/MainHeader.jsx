@@ -124,6 +124,9 @@ const MainHeader = () => {
           </button>
         </div>
 
+        <div className="mobileSearch container mx-auto px-4 w-full my-2 py-2 lg:hidden">
+        <input className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none' type='text' placeholder='Search Product' />
+        </div>
         
 
         {/* Sidebar Menu */}
