@@ -6,7 +6,7 @@ import { FaRegCopyright } from 'react-icons/fa6';
 const MainFooter = () => {
   return (
     <>
-      <div className='section container mx-auto px-4 mt-12 pt-6 mb-20 md:mb-16 lg:px-0'>
+      <div className='section container mx-auto px-4 mt-12 pt-6 mb-6 md:mb-16 lg:px-0'>
         <div className='productSection w-full flex gap-y-3 flex-wrap'>
           <div className='widget1 sm:w-1/2 md:w-1/2 lg:w-1/4 px-2 mb-4'>
             <img className='w-80 cursor-pointer mb-6' src={assets.logo} alt='' />
@@ -64,16 +64,6 @@ const MainFooter = () => {
               <p className='text-lg font-medium pb-2'>hello.shahinofficial@gmail.com</p>
             </Link>
           </div>
-        </div>
-        <div className='footerbottom my-6 flex border-t py-4'>
-          <p className='w-full flex items-center gap-2 text-base md:text-lg'>
-            {' '}
-            <FaRegCopyright /> Allrights Reserved By Md Shahin | Design & Developed By{' '}
-            <Link className='font-semibold text-orange-500' to={'https://github.com/MdShahinDev'}>
-              {' '}
-              Md Shahin
-            </Link>{' '}
-          </p>
         </div>
       </div>
     </>
