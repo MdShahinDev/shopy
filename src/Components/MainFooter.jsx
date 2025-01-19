@@ -1,7 +1,7 @@
 import React from 'react';
 import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
-import { FaRegCopyright } from "react-icons/fa6";
+import { FaRegCopyright } from 'react-icons/fa6';
 
 const MainFooter = () => {
   return (
@@ -17,7 +17,7 @@ const MainFooter = () => {
           </div>
           <div className='widget2 w-full md:w-1/2 lg:w-1/4 px-2 mb-4'>
             <h2 className='text-xl font-semibold mb-4 lg:text-2xl'>Quick Links</h2>
-            
+
             <ul className='text-lg font-medium flex flex-col gap-2 text-gray-600'>
               <Link>
                 <li className='transition-all duration-300 hover:text-black'>Shop</li>
@@ -60,11 +60,20 @@ const MainFooter = () => {
             <h2 className='text-xl font-semibold mb-4 lg:text-2xl'>Contact Us</h2>
             <p className='text-lg font-medium pb-2'>Dhaka, Bangladesh</p>
             <p className='text-lg font-medium pb-2'>+8801610-545222</p>
-            <Link to={'mailto:hello.shahinofficial@gmail.com'}><p className='text-lg font-medium pb-2'>hello.shahinofficial@gmail.com</p></Link>
+            <Link to={'mailto:hello.shahinofficial@gmail.com'}>
+              <p className='text-lg font-medium pb-2'>hello.shahinofficial@gmail.com</p>
+            </Link>
           </div>
         </div>
-        <div className="footerbottom my-6 flex justify-center items-center border-t py-4">
-            <p className='flex items-center gap-2 text-base md:text-lg'> <FaRegCopyright/> Allrights Reserved By Md Shahin | Design & Developed By <Link to={'https://github.com/MdShahinDev'}><span className='font-semibold text-orange-500'>Md Shahin</span></Link> </p>
+        <div className='footerbottom my-6 flex border-t py-4'>
+          <p className='w-full flex items-center gap-2 text-base md:text-lg'>
+            {' '}
+            <FaRegCopyright /> Allrights Reserved By Md Shahin | Design & Developed By{' '}
+            <Link className='font-semibold text-orange-500' to={'https://github.com/MdShahinDev'}>
+              {' '}
+              Md Shahin
+            </Link>{' '}
+          </p>
         </div>
       </div>
     </>
