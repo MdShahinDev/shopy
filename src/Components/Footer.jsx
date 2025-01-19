@@ -1,10 +1,11 @@
 import React from 'react'
+import MainFooter from './MainFooter'
 
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <MainFooter/>
+    </>
   )
 }
 

@@ -4,16 +4,26 @@ import SectionHeader from '../Reusable/SectionHeader';
 import TopSellingProduct from '../Components/TopSellingProduct';
 import PromotionalBanner from '../Components/PromotionalBanner';
 import FeaturedProduct from '../Components/FeaturedProduct';
+import Category from '../Components/Category';
+import TrendyProduct from '../Components/TrendyProduct';
+import EmailSubscription from '../Components/EmailSubscription';
+import BottomFeatured from '../Components/BottomFeatured';
 
 const Home = () => {
   return (
     <>
       <HeroBanner />
-      <SectionHeader title='Top Selling' description='Cum doctus civibus efficiantur in imperdiet deterruisset' />
+      <SectionHeader bgtext='category' title='Brows By' description='Navigate by category faster' />
+      <Category/>
+      <SectionHeader bgtext='Products' title='Top Selling' description='Cum doctus civibus efficiantur in imperdiet deterruisset' />
       <TopSellingProduct/>
       <PromotionalBanner/>
-      <SectionHeader title='Featured' description='Cum doctus civibus efficiantur in imperdiet deterruisset' />
+      <SectionHeader bgtext='Products' title='Featured' description='Cum doctus civibus efficiantur in imperdiet deterruisset' />
       <FeaturedProduct/>
+      <SectionHeader bgtext='products' title='Trendy' description='Cum doctus civibus efficiantur in imperdiet deterruisset'/>
+      <TrendyProduct/>
+      <EmailSubscription/>
+      <BottomFeatured/>
     </>
   );
 };

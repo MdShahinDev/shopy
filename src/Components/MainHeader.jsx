@@ -59,7 +59,7 @@ const MainHeader = () => {
         </div>
       </div>
       {/* Desktop Menu */}
-      <div className='border-b-2 hidden lg:block'>
+      <div className='border-b-2 hidden lg:block z-10'>
         <div className='main-menu py-4 container mx-auto'>
           <ul className='flex gap-4 justify-center text-base font-medium  text-gray-600 uppercase'>
             <NavLink to={'/'}>
@@ -75,7 +75,7 @@ const MainHeader = () => {
             <NavLink to={'/shop'}>
               <li className='hover:text-gray-800 group relative'>
                 <p>Men</p>
-                <div className='dropdown-menu hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
+                <div className='dropdown-menu z-20 hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
                   <div className='w-36 py-2 px-5 bg-gray-300'>
                     <ul>
                       <NavLink to={'/shop'}>
@@ -91,7 +91,7 @@ const MainHeader = () => {
             <NavLink to={'/shop'}>
               <li className='hover:text-gray-800 group relative'>
                 <p>Women</p>
-                <div className='dropdown-menu hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
+                <div className='dropdown-menu z-20 hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
                   <div className='w-36 py-2 px-5 bg-gray-300'>
                     <ul>
                       <NavLink to={'/shop'}>
@@ -186,30 +186,26 @@ const MainHeader = () => {
 
 
       {/* Bottom Fixed Menu */}
-      <div className='mobile-bottom fixed w-full bg-white border-t-2 py-4 bottom-0 z-50 lg:hidden'>
+      <div className='mobile-bottom fixed w-full bg-white border-t-2 py-3 bottom-0 z-50 lg:hidden'>
         <div className='container mx-auto flex justify-around text-black'>
           <NavLink to={'/'} className='flex flex-col items-center'>
-            <IoHomeOutline   className='text-2xl' />
+            <IoHomeOutline   className='text-xl' />
             <span className='text-sm'>Home</span>
           </NavLink>
-          <NavLink to={'/category'} className='flex flex-col items-center'>
-            <IoGridOutline className='text-2xl' />
-            <span className='text-sm'>Category</span>
-          </NavLink>
           <NavLink to={'/compare'} className='flex flex-col items-center'>
-            <IoIosGitCompare className='text-2xl' />
+            <IoIosGitCompare className='text-xl' />
             <span className='text-sm'>Compare</span>
           </NavLink>
           <NavLink to={'/wishlist'} className='flex flex-col items-center'>
-            <IoMdHeartEmpty className='text-2xl' />
+            <IoMdHeartEmpty className='text-xl' />
             <span className='text-sm'>Wishlist</span>
           </NavLink>
           <NavLink to={'/cart'} className='flex flex-col items-center'>
-            <IoBagOutline className='text-2xl' />
+            <IoBagOutline className='text-xl' />
             <span className='text-sm'>Cart</span>
           </NavLink>
           <NavLink to={'/my-account'} className='flex flex-col items-center'>
-            <FaRegCircleUser className='text-2xl' />
+            <FaRegCircleUser className='text-xl' />
             <span className='text-sm'>Account</span>
           </NavLink>
         </div>

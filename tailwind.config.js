@@ -18,6 +18,10 @@ export default {
       },
       backgroundImage: {
         'promoBanner': "url('/src/assets/promotionalBanner.jpg')",
+        'mencategory': "url('/src/assets/Mencategory.png')",
+        'womencategory': "url('/src/assets/Womencategory.png')",
+        'kidcategory': "url('/src/assets/Kidscategory.png')",
+        'emailsubscription': "url('/src/assets/Banner1.jpg')",
       }
     },
   },
