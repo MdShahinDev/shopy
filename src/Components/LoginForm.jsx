@@ -17,7 +17,7 @@ const LoginForm = () => {
                     <input type='password' placeholder='Password' className='border rounded-md px-2 p-2 focus:ring-0 focus:outline-none' />
                   </div>
       
-                  <button className='my-4 bg-black text-white w-full py-3 hover:text-gray-200 rounded-md'>Login</button>
+                  <button className='my-4 bg-black text-white w-full py-3 active:bg-gray-700 hover:text-gray-200 rounded-md'>Login</button>
                 
                 <p className='text-base'>Don't Have an account? <Link to={'/register'} ><span className='font-medium hover:text-gray-500'>Create One</span></Link></p>
                 

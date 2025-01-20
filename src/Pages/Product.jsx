@@ -6,7 +6,7 @@ const Product = () => {
   return (
     <>
       <div className='container mx-auto px-4 lg:px-0'>
-        <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
+        <div className='pt-10 transition-opacity ease-in duration-500 opacity-100'>
           {/* Product Data */}
           <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
             {/* Product img */}

@@ -20,7 +20,7 @@ const RegisterForm = () => {
               <input type='password' placeholder='Password' className='border rounded-md px-2 p-2 focus:ring-0 focus:outline-none' />
             </div>
 
-            <button className='my-4 bg-black text-white w-full py-3 hover:text-gray-200 rounded-md'>Register</button>
+            <button className='my-4 bg-black text-white w-full py-3 active:bg-gray-700 hover:text-gray-200 rounded-md'>Register</button>
           
           <p className='text-base'>Already Have an account? <Link to={'/login'} ><span className='font-medium hover:text-gray-500'>Login Here</span></Link></p>
           
