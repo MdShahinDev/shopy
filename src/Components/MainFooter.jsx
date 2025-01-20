@@ -19,19 +19,19 @@ const MainFooter = () => {
             <h2 className='text-xl font-semibold mb-4 lg:text-2xl'>Quick Links</h2>
 
             <ul className='text-lg font-medium flex flex-col gap-2 text-gray-600'>
-              <Link>
+              <Link to={'/shop'}>
                 <li className='transition-all duration-300 hover:text-black'>Shop</li>
               </Link>
-              <Link>
+              <Link to={'/login'}>
                 <li className='transition-all duration-300 hover:text-black'>My Account</li>
               </Link>
-              <Link>
+              <Link to={'/wishlist'}>
                 <li className='transition-all duration-300 hover:text-black'>Wishlist</li>
               </Link>
-              <Link>
+              <Link to={'/cart'}>
                 <li className='transition-all duration-300 hover:text-black'>My Cart</li>
               </Link>
-              <Link>
+              <Link to={'/login'}>
                 <li className='transition-all duration-300 hover:text-black'>Track Order</li>
               </Link>
             </ul>
@@ -39,19 +39,19 @@ const MainFooter = () => {
           <div className='widget3 w-full md:w-1/2 lg:w-1/4 px-2 mb-4'>
             <h2 className='text-xl font-semibold mb-4 lg:text-2xl'>Important Links</h2>
             <ul className='text-lg font-medium flex flex-col gap-2 text-gray-600 '>
-              <Link>
+              <Link to={'/contact'}>
                 <li className='transition-all duration-300 hover:text-black'>Contact Us</li>
               </Link>
-              <Link>
+              <Link to={'/privacy-policy'}>
                 <li className='transition-all duration-300 hover:text-black'>Privacy Policy</li>
               </Link>
-              <Link>
+              <Link to={'/terms-and-conditions'}>
                 <li className='transition-all duration-300 hover:text-black'>Terms' And Conditions</li>
               </Link>
-              <Link>
+              <Link to={'return-policy'}>
                 <li className='transition-all duration-300 hover:text-black'>Return Policy</li>
               </Link>
-              <Link>
+              <Link to={'/delivery-policy'}>
                 <li className='transition-all duration-300 hover:text-black'>Delivery Policy</li>
               </Link>
             </ul>

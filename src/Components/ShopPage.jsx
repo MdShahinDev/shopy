@@ -20,7 +20,7 @@ const ShopPage = () => {
             <div className='page flex gap-4 items-center '>
               <p>Per Page:</p>
               <input className=' border-gray-300 border w-32 p-1 focus:ring-0 focus:outline-none' type='text' />
-              <button onClick={toggleSidebar} className='lg:hidden'>
+              <button onClick={toggleSidebar} className=' flex items-center gap-1 lg:hidden'>Filter
                 <LuSettings2 />
               </button>
               {/* Sidebar  */}

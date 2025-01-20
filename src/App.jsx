@@ -19,6 +19,9 @@ import Wishlist from "./Pages/Wishlist";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Category from "./Pages/Category";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import ReturnPolicy from "./Pages/ReturnPolicy";
+import DeliveryPolicy from "./Pages/DeliveryPolicy";
 const App = () => {
   return (
     <div>
@@ -41,6 +44,9 @@ const App = () => {
         <Route path="/category" element={<Category/>} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/return-policy" element={<ReturnPolicy/>} />
+        <Route path="/delivery-policy" element={<DeliveryPolicy/>} />
       </Routes>
       <Footer />
     </div>
