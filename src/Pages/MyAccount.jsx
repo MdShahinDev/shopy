@@ -1,8 +1,11 @@
 import React from 'react'
+import PageHeader from '../Components/PageHeader'
 
 const MyAccount = () => {
   return (
-    <div>MyAccount</div>
+    <>
+      <PageHeader pagename='My Account' pagename2='My Account'/>
+    </>
   )
 }
 

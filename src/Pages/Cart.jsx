@@ -1,8 +1,11 @@
 import React from 'react'
+import PageHeader from '../Components/PageHeader'
 
 const Cart = () => {
   return (
-    <div>Cart</div>
+    <>
+     <PageHeader pagename='My Cart' pagename2='My Cart' />
+    </>
   )
 }
 

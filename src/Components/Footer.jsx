@@ -5,8 +5,10 @@ import Copyright from './Copyright'
 const Footer = () => {
   return (
     <>
+      <div className=' border'>
       <MainFooter/>
       <Copyright/>
+      </div>
     </>
   )
 }

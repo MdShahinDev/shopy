@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PageHeader from '../Components/PageHeader';
 
 const Compare = () => {
   return (
-    <div>Compare</div>
-  )
-}
+    <>
+      <PageHeader pagename='Compare' pagename2='Compare' />
+    </>
+  );
+};
 
-export default Compare
+export default Compare;

@@ -22,6 +22,7 @@ export default {
         'womencategory': "url('/src/assets/Womencategory.png')",
         'kidcategory': "url('/src/assets/Kidscategory.png')",
         'emailsubscription': "url('/src/assets/Banner1.jpg')",
+        'shopcover': "url('/src/assets/ShopCover.jpg')",
       }
     },
   },

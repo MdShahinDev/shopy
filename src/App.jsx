@@ -18,6 +18,7 @@ import TermsAndConditions from "./Pages/TermsAndConditions";
 import Wishlist from "./Pages/Wishlist";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import Category from "./Pages/Category";
 const App = () => {
   return (
     <div>
@@ -27,7 +28,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/compre" element={<Compare />} />
+        <Route path="/compare" element={<Compare />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faqs" element={<Faqs />} />
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/search" element={<Search />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/category" element={<Category/>} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/wishlist" element={<Wishlist />} />
       </Routes>

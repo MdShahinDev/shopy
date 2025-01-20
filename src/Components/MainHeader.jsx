@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
-import { IoBagOutline, IoGridOutline, IoHomeOutline  } from 'react-icons/io5';
+import { IoBagOutline,  IoHomeOutline  } from 'react-icons/io5';
+import { MdLogin } from "react-icons/md";
 import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
 
 const MainHeader = () => {
@@ -49,9 +50,9 @@ const MainHeader = () => {
                   <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>0</span>
                 </li>
               </Link>
-              <Link to={'/my-account'}>
+              <Link to={'/login'}>
                 <li>
-                  <FaRegCircleUser />
+                  <MdLogin />
                 </li>
               </Link>
             </ul>
@@ -204,8 +205,8 @@ const MainHeader = () => {
             <IoBagOutline className='text-xl' />
             <span className='text-sm'>Cart</span>
           </NavLink>
-          <NavLink to={'/my-account'} className='flex flex-col items-center'>
-            <FaRegCircleUser className='text-xl' />
+          <NavLink to={'/login'} className='flex flex-col items-center'>
+            <MdLogin className='text-xl' />
             <span className='text-sm'>Account</span>
           </NavLink>
         </div>

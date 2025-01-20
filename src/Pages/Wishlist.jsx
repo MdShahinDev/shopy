@@ -1,8 +1,11 @@
 import React from 'react'
+import PageHeader from '../Components/PageHeader'
 
 const Wishlist = () => {
   return (
-    <div>Wishlist</div>
+    <>
+     <PageHeader pagename='My Wishlist' pagename2='My Wishlist'/> 
+    </>
   )
 }
 
