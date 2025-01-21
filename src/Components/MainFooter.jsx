@@ -1,8 +1,7 @@
 import React from 'react';
 import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
-import { FaRegCopyright } from 'react-icons/fa6';
-
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin,FaWhatsapp} from "react-icons/fa";
 const MainFooter = () => {
   return (
     <>
@@ -63,6 +62,13 @@ const MainFooter = () => {
             <Link to={'mailto:hello.shahinofficial@gmail.com'}>
               <p className='text-lg font-medium pb-2'>hello.shahinofficial@gmail.com</p>
             </Link>
+            <div className='flex gap-5 py-6 text-xl md:text-2xl'>
+            <Link to={'https://www.facebook.com/mdshahin.mee'} className=''><FaFacebook/></Link>
+            <Link to={'https://github.com/MdShahinDev'} className=''><FaGithub/></Link>
+            <Link to={'https://instagram.com/mdshahin.me'} className=''><FaInstagram/></Link>
+            <Link to={'https://www.linkedin.com/in/mdshahinme/'} className=''><FaLinkedin/></Link>
+            <Link to={'https://wa.me/+8801610545222'} className=''><FaWhatsapp/></Link>
+            </div>
           </div>
         </div>
       </div>

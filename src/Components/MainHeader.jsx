@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
-import { IoBagOutline,  IoHomeOutline  } from 'react-icons/io5';
-import { MdLogin } from "react-icons/md";
+import { IoBagOutline, IoHomeOutline } from 'react-icons/io5';
+import { MdLogin } from 'react-icons/md';
 import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
 
 const MainHeader = () => {
@@ -125,16 +125,15 @@ const MainHeader = () => {
           </button>
         </div>
 
-        <div className="mobileSearch container mx-auto px-4 w-full my-2 py-2 lg:hidden">
-        <input className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none' type='text' placeholder='Search Product' />
+        <div className='mobileSearch container mx-auto px-4 w-full my-2 py-2 lg:hidden'>
+          <input className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none' type='text' placeholder='Search Product' />
         </div>
-        
 
         {/* Sidebar Menu */}
-        <div className={`fixed top-0 left-0 bottom-0 bg-white shadow-lg z-50 w-3/4 transform transition-transform duration-300 ${visible ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`fixed top-0 left-0 bottom-0 bg-white shadow-lg px-2 z-50 w-3/4 transform transition-transform duration-300 ${visible ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className='container mx-auto px-4 py-2 border-b-2 flex justify-between items-center'>
-            <img className='w-64' src={assets.logo} alt='Logo' />
-            <button onClick={toggleSidebar} className='text-3xl font-bold'>
+            <img className='w-56' src={assets.logo} alt='Logo' />
+            <button onClick={toggleSidebar} className='text-2xl font-bold'>
               <IoMdClose />
             </button>
           </div>
@@ -185,12 +184,11 @@ const MainHeader = () => {
         </div>
       </div>
 
-
       {/* Bottom Fixed Menu */}
       <div className='mobile-bottom fixed w-full bg-white border-t-2 py-3 bottom-0 z-50 lg:hidden'>
         <div className='container mx-auto flex justify-around text-black'>
           <NavLink to={'/'} className='flex flex-col items-center'>
-            <IoHomeOutline   className='text-xl' />
+            <IoHomeOutline className='text-xl' />
             <span className='text-sm'>Home</span>
           </NavLink>
           <NavLink to={'/compare'} className='flex flex-col items-center'>
