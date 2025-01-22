@@ -8,7 +8,7 @@ const PageHeader = (props) => {
         <h2 className='text-4xl font-semibold md:text-6xl'>{props.pagename}</h2>
         <ul className='flex gap-2 my-4 list-disc list-inside text-gray-800'>
           <Link to={'/'}><li>Home</li></Link>
-          <Link to={'/shop'} className='text-gray-950'><li>{props.pagename2}</li></Link>
+          <li className='text-gray-950'>{props.pagename2}</li>
         </ul>
       </div>
     </>

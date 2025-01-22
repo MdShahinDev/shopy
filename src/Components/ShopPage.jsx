@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LuSettings2 } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import productimg from '../assets/p_img1.png';
 import { IoIosGitCompare, IoMdHeartEmpty } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
+import { ShopContext } from '../Context/ShopContext';
 const ShopPage = () => {
   const [visible, setVisible] = useState(false);
+  const {products} = useContext(ShopContext);
+  const {currency} = useContext(ShopContext);
+
+  let [category, setCategory] = useState([]);
+
+  
 
   const toggleSidebar = () => {
     setVisible(!visible);

@@ -5,6 +5,7 @@ import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
 import { IoBagOutline, IoHomeOutline } from 'react-icons/io5';
 import { MdLogin } from 'react-icons/md';
 import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
+import { CiShop } from "react-icons/ci";
 
 const MainHeader = () => {
   const [visible, setVisible] = useState(false);
@@ -73,15 +74,30 @@ const MainHeader = () => {
                 <p>Shop</p>
               </li>
             </NavLink>
-            <NavLink to={'/shop'}>
+            <NavLink to={'/category/Men'}>
               <li className='hover:text-gray-800 group relative'>
                 <p>Men</p>
                 <div className='dropdown-menu z-20 hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
-                  <div className='w-36 py-2 px-5 bg-gray-300'>
-                    <ul>
-                      <NavLink to={'/shop'}>
-                        <li>
-                          <p>Bootm</p>
+                  <div className='w-40 py-2 px-5 bg-white shadow-md'>
+                    <ul className='flex flex-col gap-4'>
+                      <NavLink to={'/category/Men'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Topwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Men'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Bottomwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Men'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Winterwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Men'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Shoe</p>
                         </li>
                       </NavLink>
                     </ul>
@@ -89,15 +105,30 @@ const MainHeader = () => {
                 </div>
               </li>
             </NavLink>
-            <NavLink to={'/shop'}>
+            <NavLink to={'/category/Women'}>
               <li className='hover:text-gray-800 group relative'>
                 <p>Women</p>
                 <div className='dropdown-menu z-20 hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
-                  <div className='w-36 py-2 px-5 bg-gray-300'>
-                    <ul>
-                      <NavLink to={'/shop'}>
-                        <li>
-                          <p>Bootm</p>
+                  <div className='w-36 py-2 px-5 bg-white'>
+                  <ul className='flex flex-col gap-4'>
+                      <NavLink to={'/category/Women'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Topwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Women'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Bottomwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Women'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Winterwear</p>
+                        </li>
+                      </NavLink>
+                      <NavLink to={'/category/Women'}>
+                        <li className='hover:text-gray-950'>
+                          <p>Shoe</p>
                         </li>
                       </NavLink>
                     </ul>
@@ -105,7 +136,12 @@ const MainHeader = () => {
                 </div>
               </li>
             </NavLink>
-            <NavLink to={'/shop'}>
+            <NavLink to={'/category/Kids'}>
+              <li className='hover:text-gray-800'>
+                <p>Kids</p>
+              </li>
+            </NavLink>
+            <NavLink to={'/contact'}>
               <li className='hover:text-gray-800'>
                 <p>Contact Us</p>
               </li>
@@ -149,13 +185,23 @@ const MainHeader = () => {
 
               {/* Men Dropdown */}
               <li>
-                <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer' onClick={toggleMenDropdown}>
-                  <p>Men</p> <span>{menDropdownOpen ? '-' : '+'}</span>
+                <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer' >
+                  <Link to={'/category/Men'}><p>Men</p>
+                  </Link><span onClick={toggleMenDropdown}>{menDropdownOpen ? '-' : '+'}</span>               
                 </div>
                 <div className={`overflow-hidden transition-all duration-300 ${menDropdownOpen ? 'max-h-40' : 'max-h-0'}`}>
-                  <ul className='pl-4 mt-2 flex flex-col gap-2 text-sm'>
-                    <NavLink to={'/shop'} onClick={toggleSidebar}>
-                      <li className='hover:text-gray-800'>Bootm</li>
+                  <ul className='pl-4 my-4 flex flex-col gap-2 text-sm'>
+                    <NavLink to={'/category/Men'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Topwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Men'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Bottomwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Men'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Winterwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Men'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Shoe</li>
                     </NavLink>
                   </ul>
                 </div>
@@ -164,19 +210,28 @@ const MainHeader = () => {
               {/* Women Dropdown */}
               <li>
                 <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer' onClick={toggleWomenDropdown}>
-                  <p>Women</p>
+                  <Link to={'/category/Women'}><p>Women</p></Link>
                   <span>{womenDropdownOpen ? '-' : '+'}</span>
                 </div>
                 <div className={`overflow-hidden transition-all duration-300 ${womenDropdownOpen ? 'max-h-40' : 'max-h-0'}`}>
-                  <ul className='pl-4 mt-2 flex flex-col gap-2 text-sm'>
-                    <NavLink to={'/shop'} onClick={toggleSidebar}>
-                      <li className='hover:text-gray-800'>Bootm</li>
+                  <ul className='pl-4 my-4 flex flex-col gap-2 text-sm'>
+                  <NavLink to={'/category/Women'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Topwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Women'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Bottomwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Women'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Winterwear</li>
+                    </NavLink>
+                    <NavLink to={'/category/Women'} onClick={toggleSidebar}>
+                      <li className='hover:text-gray-800 my-2'>Shoe</li>
                     </NavLink>
                   </ul>
                 </div>
               </li>
 
-              <NavLink to={'/shop'} onClick={toggleSidebar}>
+              <NavLink to={'/contact'} onClick={toggleSidebar}>
                 <li className='hover:text-gray-800'>Contact Us</li>
               </NavLink>
             </ul>
@@ -190,6 +245,10 @@ const MainHeader = () => {
           <NavLink to={'/'} className='flex flex-col items-center'>
             <IoHomeOutline className='text-xl' />
             <span className='text-sm'>Home</span>
+          </NavLink>
+          <NavLink to={'/shop'} className='flex flex-col items-center'>
+            <CiShop className='text-xl' />
+            <span className='text-sm'>Shop</span>
           </NavLink>
           <NavLink to={'/compare'} className='flex flex-col items-center'>
             <IoIosGitCompare className='text-xl' />
