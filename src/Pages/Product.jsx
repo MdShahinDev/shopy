@@ -2,25 +2,40 @@ import React, { useContext, useEffect, useState } from 'react';
 import productimg from '../assets/p_img1.png';
 import { assets } from '../assets/assets';
 import RelatedProduct from '../Components/RelatedProduct';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../Components/Slices/CartSlice';
+import { addToWish } from '../Components/Slices/wishListSlice';
+
 const Product = () => {
   const { products } = useContext(ShopContext);
   const { currency } = useContext(ShopContext);
   const location = useLocation();
   const { id } = location.state || {};
-  const [singleProduct, setSingleProduct] = useState(null);
+  const singleProduct = products.find((item) => item.id === id);
   const [image, setImage] = useState('');
+  const [size,setSize] = useState('');
+  const wishlist = useSelector((state)=>state.wishItemManager.wishItems);
+  const isProductInWishlist = wishlist.some((product) => product.id === id);
   
   useEffect(() => {
-    const product = products.find((item) => item.id === id);
-    if (product) {
-      setSingleProduct(product);
-      setImage(product.image[0]);
+    if (singleProduct) {
+      setImage(singleProduct.image[0]);
     }
   }, [id, products]);
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item)=>{
+   
+    dispatch(addToCart({...item, qty: 1, selectedSize: size}))
+
+  }
+  const handleAddToWish =(item)=>{    
+    dispatch(addToWish(item))
+  }
   
-  console.log(singleProduct);
   return (
     <>
       <div className='container mx-auto px-4 lg:px-0'>
@@ -31,22 +46,17 @@ const Product = () => {
 
             <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
               <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
-               
-                    <img src={productimg}  alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
-                    <img src={productimg}  alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
-                    <img src={productimg}  alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
-                  
-                
-                
-                
+                {singleProduct.image.map((item, index) => (
+                  <img onClick={()=>setImage(item)} key={index} src={item} alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
+                ))}
               </div>
               <div className='w-full sm:w-[80%]'>
-                <img src={productimg} className='w-full h-auto' alt='' />
+                <img src={image} className='w-full h-auto' alt='' />
               </div>
             </div>
             {/* Product Details */}
             <div className='flex-1'>
-              <h1 className='font-medium text-2xl mt-2'>Ladies Three Piece</h1>
+              <h1 className='font-medium text-2xl mt-2'>{singleProduct.name}</h1>
               <div className='flex items-center gap-1 mt-2'>
                 <img src={assets.star_icon} alt='' className='w-3 5' />
                 <img src={assets.star_icon} alt='' className='w-3 5' />
@@ -55,24 +65,34 @@ const Product = () => {
                 <img src={assets.star_dull_icon} alt='' className='w-3 5' />
                 <p className='pl-2'>(122)</p>
               </div>
-              <p className='mt-5 text-3xl font-medium'>$ 12.99</p>
-              <p className='mt-5 text-gray-500 md:w-4/5'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa qui obcaecati, ea rem, illum minus distinctio id ratione at repellendus voluptatum saepe iure necessitatibus voluptas et
-                repudiandae, sed sint magnam!
+              <p className='mt-5 text-3xl font-medium'>
+                {currency} {singleProduct.price}
               </p>
+              <p className='mt-5 text-gray-500 md:w-4/5'>{singleProduct.description}</p>
               <div className='flex flex-col gap-4 my-8'>
                 <p>Select Size</p>
                 <div className='flex gap-2'>
-                  <button className={`border py-2 px-4 bg-gray-100`}>L</button>
-                  <button className={`border py-2 px-4 bg-gray-100`}>L</button>
-                  <button className={`border py-2 px-4 bg-gray-100`}>L</button>
+                  {singleProduct.sizes.map((item, index) => (
+                    <button onClick={()=>setSize(item)} key={index} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-black': ''}`}>{item}</button>
+                  ))}
                 </div>
               </div>
-              <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+              <div className='button flex gap-4'>
+              <button onClick={()=>handleAddToCart(singleProduct)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+              {
+                isProductInWishlist ? <Link to={'/wishlist'}> <button className=' text-black px-8 py-3 border text-sm'>ALREADY IN WISHLIST GO TO WISHLIST</button></Link> :<button onClick={()=>handleAddToWish(singleProduct)} className=' text-black px-8 py-3 border text-sm'>ADD TO WISHLIST</button>
+              }
+              
+              
+
+              </div>
+              
               <hr className='mt-8 sm:w-4/5' />
               <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
                 <p>SKU: TH45HD</p>
-                <p>Category: Men, Topwear</p>
+                <p>
+                  Category: {singleProduct.category}, {singleProduct.subCategory}
+                </p>
                 <p className='mt-6'>100% Original Product</p>
                 <p className=''>Cash on delivery is available</p>
                 <p className=''>Easy Reaturn and exchange policy within 7 days</p>
@@ -95,7 +115,7 @@ const Product = () => {
             </div>
           </div>
           {/* Related Product */}
-          <RelatedProduct />
+          {/* <RelatedProduct category={singleProduct.category} subCategory= {singleProduct.subCategory} /> */}
         </div>
       </div>
     </>

@@ -5,7 +5,8 @@ import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
 import { IoBagOutline, IoHomeOutline } from 'react-icons/io5';
 import { MdLogin } from 'react-icons/md';
 import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
-import { CiShop } from "react-icons/ci";
+import { CiShop } from 'react-icons/ci';
+import { useSelector } from 'react-redux';
 
 const MainHeader = () => {
   const [visible, setVisible] = useState(false);
@@ -19,6 +20,16 @@ const MainHeader = () => {
 
   const toggleMenDropdown = () => setMenDropdownOpen(!menDropdownOpen);
   const toggleWomenDropdown = () => setWomenDropdownOpen(!womenDropdownOpen);
+  const wishData =  useSelector((state)=>state.wishItemManager.wishItems);
+  let totalwish = wishData.length;
+  
+  const cartData = useSelector((state) => state.cartItemManager.cartItems);
+  let totalqty = 0;
+  for (let i = 0; i < cartData.length; i++) {
+    let item = cartData[i];
+    totalqty += item.qty;
+  }
+  console.log(totalqty);
 
   return (
     <>
@@ -42,13 +53,13 @@ const MainHeader = () => {
               <Link to={'/wishlist'}>
                 <li className=' relative'>
                   <IoMdHeartEmpty />
-                  <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>0</span>
+                  <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>{totalwish}</span>
                 </li>
               </Link>
               <Link to={'/cart'}>
                 <li className=' relative'>
                   <IoBagOutline />
-                  <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>0</span>
+                  <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>{totalqty}</span>
                 </li>
               </Link>
               <Link to={'/login'}>
@@ -110,7 +121,7 @@ const MainHeader = () => {
                 <p>Women</p>
                 <div className='dropdown-menu z-20 hidden group-hover:block absolute left-0 pt-4 transition-all duration-300 ease-in-out transform opacity-0 -translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>
                   <div className='w-36 py-2 px-5 bg-white'>
-                  <ul className='flex flex-col gap-4'>
+                    <ul className='flex flex-col gap-4'>
                       <NavLink to={'/category/Women'}>
                         <li className='hover:text-gray-950'>
                           <p>Topwear</p>
@@ -185,9 +196,11 @@ const MainHeader = () => {
 
               {/* Men Dropdown */}
               <li>
-                <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer' >
-                  <Link to={'/category/Men'}><p>Men</p>
-                  </Link><span onClick={toggleMenDropdown}>{menDropdownOpen ? '-' : '+'}</span>               
+                <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer'>
+                  <Link to={'/category/Men'}>
+                    <p>Men</p>
+                  </Link>
+                  <span onClick={toggleMenDropdown}>{menDropdownOpen ? '-' : '+'}</span>
                 </div>
                 <div className={`overflow-hidden transition-all duration-300 ${menDropdownOpen ? 'max-h-40' : 'max-h-0'}`}>
                   <ul className='pl-4 my-4 flex flex-col gap-2 text-sm'>
@@ -210,12 +223,14 @@ const MainHeader = () => {
               {/* Women Dropdown */}
               <li>
                 <div className='flex justify-between items-center hover:text-gray-800 cursor-pointer' onClick={toggleWomenDropdown}>
-                  <Link to={'/category/Women'}><p>Women</p></Link>
+                  <Link to={'/category/Women'}>
+                    <p>Women</p>
+                  </Link>
                   <span>{womenDropdownOpen ? '-' : '+'}</span>
                 </div>
                 <div className={`overflow-hidden transition-all duration-300 ${womenDropdownOpen ? 'max-h-40' : 'max-h-0'}`}>
                   <ul className='pl-4 my-4 flex flex-col gap-2 text-sm'>
-                  <NavLink to={'/category/Women'} onClick={toggleSidebar}>
+                    <NavLink to={'/category/Women'} onClick={toggleSidebar}>
                       <li className='hover:text-gray-800 my-2'>Topwear</li>
                     </NavLink>
                     <NavLink to={'/category/Women'} onClick={toggleSidebar}>
@@ -250,17 +265,20 @@ const MainHeader = () => {
             <CiShop className='text-xl' />
             <span className='text-sm'>Shop</span>
           </NavLink>
-          <NavLink to={'/compare'} className='flex flex-col items-center'>
+          <NavLink to={'/compare'} className='flex flex-col items-center relative'>
             <IoIosGitCompare className='text-xl' />
             <span className='text-sm'>Compare</span>
+            <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>0</span>
           </NavLink>
-          <NavLink to={'/wishlist'} className='flex flex-col items-center'>
+          <NavLink to={'/wishlist'} className='flex flex-col items-center relative'>
             <IoMdHeartEmpty className='text-xl' />
             <span className='text-sm'>Wishlist</span>
+            <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>0</span>
           </NavLink>
-          <NavLink to={'/cart'} className='flex flex-col items-center'>
+          <NavLink to={'/cart'} className='flex flex-col items-center relative'>
             <IoBagOutline className='text-xl' />
             <span className='text-sm'>Cart</span>
+            <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>{totalqty}</span>
           </NavLink>
           <NavLink to={'/login'} className='flex flex-col items-center'>
             <MdLogin className='text-xl' />

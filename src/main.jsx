@@ -6,10 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ShopContextProvider from './Context/ShopContext.jsx';
+import store from './store.js';
+import { Provider } from 'react-redux';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <ShopContextProvider>
-      <App />
-    </ShopContextProvider>
+    <Provider store={store}>
+      <ShopContextProvider>
+        <App />
+      </ShopContextProvider>
+    </Provider>
   </BrowserRouter>
 );

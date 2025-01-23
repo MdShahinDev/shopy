@@ -82,6 +82,7 @@ import p_img71 from "./p_img71.jpg";
 import banner from "./Banner.jpg";
 import logo from "./logo.png";
 import banner2 from './Banner-2.jpg';
+import emptycart from './emptycart.png';
 
 import star_dull_icon from './star_dull_icon.png'
 import star_icon from './star_icon.png'
@@ -92,6 +93,7 @@ export const assets = {
   banner2,
   star_dull_icon,
   star_icon,
+  emptycart,
 };
 
 export const products = [

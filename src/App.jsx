@@ -22,9 +22,12 @@ import Category from "./Pages/Category";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import ReturnPolicy from "./Pages/ReturnPolicy";
 import DeliveryPolicy from "./Pages/DeliveryPolicy";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <div>
+      <ToastContainer/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
