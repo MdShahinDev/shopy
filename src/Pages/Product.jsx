@@ -5,7 +5,7 @@ import RelatedProduct from '../Components/RelatedProduct';
 import { Link, useLocation } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../Components/Slices/CartSlice';
+import { addToCart } from '../Components/Slices/cartSlice';
 import { addToWish } from '../Components/Slices/wishListSlice';
 
 const Product = () => {

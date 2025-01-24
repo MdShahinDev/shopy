@@ -273,7 +273,7 @@ const MainHeader = () => {
           <NavLink to={'/wishlist'} className='flex flex-col items-center relative'>
             <IoMdHeartEmpty className='text-xl' />
             <span className='text-sm'>Wishlist</span>
-            <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>0</span>
+            <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>{totalwish}</span>
           </NavLink>
           <NavLink to={'/cart'} className='flex flex-col items-center relative'>
             <IoBagOutline className='text-xl' />
