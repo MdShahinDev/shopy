@@ -10,6 +10,12 @@ import { FaArrowLeft } from "react-icons/fa";
 const CartDetails = () => {
   const {currency} = useContext(ShopContext);
   let cartData = useSelector((state) => state.cartItemManager.cartItems);
+  let totalqty = 0;
+  for (let i = 0; i < cartData.length; i++) {
+    let item = cartData[i];
+    totalqty += item.qty;
+  }
+
   let dispatch = useDispatch();
   const handleDelete = (index)=>{
     dispatch(deleteCartItem(index))
@@ -28,30 +34,32 @@ const CartDetails = () => {
         <div className='itemcard w-full '>
           <div className='cardheading flex justify-between py-4 font-semibold text-base lg:text-2xl'>
             <div className='w-2/5 flex justify-start'>Product</div>
-            <div className='w-1/6 flex justify-start'>Price</div>
+            <div className='w-1/6 hidden md:flex justify-start'>Price</div>
             <div className='w-1/5 flex justify-center'>Quantity</div>
             <div className='w-1/5  hidden md:flex justify-center '>Total</div>
           </div>
           {cartData.map((item, index) => (
             <div key={item.id} className='cart-product flex justify-between items-center py-4 font-Crimson font-semibold text-2xl'>
-              <div className='w-2/5 flex justify-start '>
+              <div className='w-4/5 md:w-2/5  justify-start '>
                 <div className='product-info flex gap-2 relative'>
                   <img src={item.image[0]} className='w-20 bg-slate-200' alt='' />
                   <IoMdClose onClick={()=>handleDelete(index)} className='absolute left-16 bottom-[5rem] cursor-pointer' />
                   <div className='product-details'>
                     <p className='text-base font-normal'>{item.name}</p>
                     <p className='text-base font-normal'>Size: {item.selectedSize}</p>
+                    <p className='text-base font-normal'>Price: {item.qty} x {currency}{item.price} </p>
                   </div>
+                  
                 </div>
               </div>
-              <div className='w-1/6 flex justify-start text-base md:text-lg'>{currency}{item.price}</div>
+              <div className='w-1/6 hidden md:flex justify-start text-base md:text-lg'>{currency}{item.price}</div>
               <div className='w-1/5 flex justify-center'>
-                <div className='qty-change flex items-center overflow-hidden'>
-                  <button onClick={()=>handleDecreament(index)} className='px-2  bg-gray-300 text-black hover:bg-gray-400'>-</button>
+                <div className='qty-change border flex items-center overflow-hidden'>
+                  <button onClick={()=>handleDecreament(index)} className='px-2 text-black'>-</button>
 
-                  <span className='px-4  bg-gray-100 text-center text-base md:text-lg'>{item.qty}</span>
+                  <span className='px-4 text-center text-base md:text-lg'>{item.qty}</span>
 
-                  <button onClick={()=>handleIncreament(index)} className='px-2 bg-gray-300 text-black hover:bg-gray-400'>+</button>
+                  <button onClick={()=>handleIncreament(index)} className='px-2  text-black'>+</button>
                 </div>
               </div>
               <div className='w-1/5 hidden lg:flex justify-center text-base md:text-lg'>$670.88</div>

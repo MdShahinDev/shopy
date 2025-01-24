@@ -48,7 +48,7 @@ const TopSellingProduct = () => {
                 <div className='quickPanel absolute flex flex-col gap-4 top-8 left-8 text-lg lg:text-xl opacity-100 lg:opacity-0 lg:-translate-x-5 transition-all duration-300 lg:group-hover:opacity-100 lg:group-hover:translate-x-4'>
                   {/* <IoIosGitCompare className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /> */}
                   {
-                   wishid.includes(item.id) ? <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }}><IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /></Link>:<IoMdHeartEmpty onClick={()=>handleAddToWish(item)} className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
+                   wishid.includes(item.id) ? <Link to={'/wishlist'}><IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /></Link>:<IoMdHeartEmpty onClick={()=>handleAddToWish(item)} className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
                   }
                   <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' onClick={() => handleOpenModal(item.id)} />
                 </div>
