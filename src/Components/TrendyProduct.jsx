@@ -4,16 +4,27 @@ import { IoIosGitCompare, IoMdHeartEmpty } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
+import Modal from '../Reusable/Modal';
 const TrendyProduct = () => {
   const { products } = useContext(ShopContext);
   const { currency } = useContext(ShopContext);
   const [trendyProduct, setTrendyProduct] = useState([]);
- 
-    
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
+
   useEffect(() => {
     setTrendyProduct(products.slice(16, 22));
   }, []);
+
+  const handleOpenModal = (productId) => {
+    setSelectedProductId(productId);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProductId(null);
+  };
   return (
     <>
       <div className='section container mx-auto px-4 my-8 lg:px-0'>
@@ -24,9 +35,9 @@ const TrendyProduct = () => {
                 <img className='w-full transition-all duration-300 hover:shadow-lg' src={item.image[0]} alt='' />
               </Link>
               <div className='quickPanel flex gap-4 justify-center mt-4'>
-                <IoIosGitCompare className='cursor-pointer transition-all duration-300 hover:text-red-500 text-2xl' />
+                {/* <IoIosGitCompare className='cursor-pointer transition-all duration-300 hover:text-red-500 text-2xl' /> */}
                 <IoMdHeartEmpty className='cursor-pointer transition-all duration-300 hover:text-red-500 text-2xl' />
-                <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-2xl' />
+                <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-2xl' onClick={() => handleOpenModal(item.id)} />
               </div>
               <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }}>
                 <h2 className='text-lg font-semibold text-center text-gray-700 hover:text-gray-900 md:text-xl py-4'>{item.name}</h2>
@@ -45,6 +56,7 @@ const TrendyProduct = () => {
           ))}
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} productId={selectedProductId} />
     </>
   );
 };

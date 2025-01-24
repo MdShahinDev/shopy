@@ -80,7 +80,7 @@ const Product = () => {
               <div className='button flex gap-4'>
               <button onClick={()=>handleAddToCart(singleProduct)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
               {
-                isProductInWishlist ? <Link to={'/wishlist'}> <button className=' text-black px-8 py-3 border text-sm'>ALREADY IN WISHLIST GO TO WISHLIST</button></Link> :<button onClick={()=>handleAddToWish(singleProduct)} className=' text-black px-8 py-3 border text-sm'>ADD TO WISHLIST</button>
+                isProductInWishlist ? <Link to={'/wishlist'}> <button className=' text-black px-8 py-3 border text-sm'>GO TO WISHLIST</button></Link> :<button onClick={()=>handleAddToWish(singleProduct)} className=' text-black px-8 py-3 border text-sm'>ADD TO WISHLIST</button>
               }
               
               

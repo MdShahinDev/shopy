@@ -44,12 +44,12 @@ const MainHeader = () => {
           </div>
           <div>
             <ul className='text-2xl flex gap-8 '>
-              <Link to={'/compare'}>
+              {/* <Link to={'/compare'}>
                 <li className=' relative'>
                   <IoIosGitCompare />
                   <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>0</span>
                 </li>
-              </Link>
+              </Link> */}
               <Link to={'/wishlist'}>
                 <li className=' relative'>
                   <IoMdHeartEmpty />
@@ -265,11 +265,11 @@ const MainHeader = () => {
             <CiShop className='text-xl' />
             <span className='text-sm'>Shop</span>
           </NavLink>
-          <NavLink to={'/compare'} className='flex flex-col items-center relative'>
+          {/* <NavLink to={'/compare'} className='flex flex-col items-center relative'>
             <IoIosGitCompare className='text-xl' />
             <span className='text-sm'>Compare</span>
             <span className='absolute top-0 right-0 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>0</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink to={'/wishlist'} className='flex flex-col items-center relative'>
             <IoMdHeartEmpty className='text-xl' />
             <span className='text-sm'>Wishlist</span>

@@ -51,7 +51,7 @@ const WishlistDetails = () => {
                   <div className='w-1/5 flex justify-center'>
                     <div className='qty-change flex items-center  overflow-hidden'>
                       <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }}>
-                        <button className='text-xs border px-2 py-1 transition-all duration-300 font-normal hover:border-black  lg:px-4 md:text-xl '>VIEW PRODUCT</button>
+                        <button className='text-xs border px-2 py-1 transition-all duration-300 font-normal hover:border-black  lg:px-4 md:text-lg '>VIEW PRODUCT</button>
                       </Link>
                     </div>
                   </div>
