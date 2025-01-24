@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { cartSlice } from './Components/Slices/CartSlice'
+import { cartSlice } from './Components/Slices/cartSlice'
 import { wishListSlice } from './Components/Slices/wishListSlice'
 
 export default configureStore({
