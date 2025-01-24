@@ -3,7 +3,7 @@ import { assets } from '../assets/assets';
 import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { ShopContext } from '../Context/ShopContext';
-import { deleteCartItem, increament, decreament} from './Slices/CartSlice';
+import { deleteCartItem, increament, decreament} from './Slices/cartSlice';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
 
