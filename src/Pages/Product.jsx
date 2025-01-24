@@ -7,6 +7,7 @@ import { ShopContext } from '../Context/ShopContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../Components/Slices/cartSlice';
 import { addToWish } from '../Components/Slices/wishListSlice';
+import { toast } from 'react-toastify';
 
 const Product = () => {
   const { products } = useContext(ShopContext);
@@ -27,13 +28,20 @@ const Product = () => {
 
   const dispatch = useDispatch();
 
-  const handleAddToCart = (item)=>{
-   
-    dispatch(addToCart({...item, qty: 1, selectedSize: size}))
-
-  }
+  const handleAddToCart = (item) => {
+    if (!size || size.trim() === '') {
+      toast.error('Select Size'); 
+      return; 
+    }
+    const product = { ...item, qty: 1, selectedSize: size };
+    console.log(product); // Debugging to check the product object
+  
+    dispatch(addToCart(product)); // Add to cart
+    toast.success('Added To Cart'); // Show success toast
+  };
   const handleAddToWish =(item)=>{    
     dispatch(addToWish(item))
+    toast.success('Addes To Wishlist');
   }
   
   return (

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Modal from '../Reusable/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToWish } from './Slices/wishListSlice';
+import { toast } from 'react-toastify';
 
 const TopSellingProduct = () => {
   const { products } = useContext(ShopContext);
@@ -33,6 +34,7 @@ const TopSellingProduct = () => {
   };
   const handleAddToWish = (item)=>{
     dispatch(addToWish(item))
+    toast.success('Addes To Wishlist');
   }
   return (
     <>
