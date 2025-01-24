@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
@@ -7,22 +7,41 @@ import { MdLogin } from 'react-icons/md';
 import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
 import { CiShop } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
+import { ShopContext } from '../Context/ShopContext';
 
 const MainHeader = () => {
   const [visible, setVisible] = useState(false);
   const [menDropdownOpen, setMenDropdownOpen] = useState(false);
   const [womenDropdownOpen, setWomenDropdownOpen] = useState(false);
-
+  const { products } = useContext(ShopContext);
+  const { currency } = useContext(ShopContext);
   const toggleSidebar = () => {
     setVisible(!visible);
     document.body.style.overflow = visible ? 'auto' : 'hidden';
   };
-
+  let [searchResult, setSearchResult] = useState([]);
+  // const handleSearch = (e) => {
+  //   let searchProduct = products.filter((item) =>
+  //     item.name.toLowerCase().startsWith(e.target.value.toLowerCase())
+  //   );
+  //   setSearchResult(searchProduct);
+  //   if (e.target.value == "") {
+  //     setSearchResult([]);
+  //   }
+  // };
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const searchProduct = products.filter((item) => item.name.toLowerCase().includes(searchTerm));
+    setSearchResult(searchProduct);
+    if (searchTerm === '') {
+      setSearchResult([]);
+    }
+  };
   const toggleMenDropdown = () => setMenDropdownOpen(!menDropdownOpen);
   const toggleWomenDropdown = () => setWomenDropdownOpen(!womenDropdownOpen);
-  const wishData =  useSelector((state)=>state.wishItemManager.wishItems);
+  const wishData = useSelector((state) => state.wishItemManager.wishItems);
   let totalwish = wishData.length;
-  
+
   const cartData = useSelector((state) => state.cartItemManager.cartItems);
   let totalqty = 0;
   for (let i = 0; i < cartData.length; i++) {
@@ -39,17 +58,35 @@ const MainHeader = () => {
           <Link to={'/'}>
             <img className='w-96' src={assets.logo} alt='Logo' />
           </Link>
-          <div className='w-full text-center'>
-            <input className='w-3/4 border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none' type='text' placeholder='Search Product' />
+          <div className='w-full relative flex flex-col items-center'>
+            <input
+              onChange={handleSearch}
+              className=' w-3/4 border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none'
+              type='text'
+              placeholder='Search Product'
+            />
+
+            {searchResult.length > 0 && (
+              <div className='result absolute z-50 top-12 px-4 mb-4 w-3/4 bg-white rounded-md shadow-lg max-h-[500px] overflow-y-auto'>
+                {searchResult.map((item) => (
+                  <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }} onClick={() => setSearchResult([])}>
+                    <div key={item.id} className='flex gap-3 mb-2 items-center'>
+                      <img className='w-20' src={item.image[0]} alt='' />
+                      <div>
+                        <h3>{item.name}</h3>
+                        <p>
+                          {currency}
+                          {item.price}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
           <div>
             <ul className='text-2xl flex gap-8 '>
-              {/* <Link to={'/compare'}>
-                <li className=' relative'>
-                  <IoIosGitCompare />
-                  <span className='absolute -bottom-3 -right-3 text-xs bg-black rounded-full text-white w-5 h-5 flex justify-center items-center'>0</span>
-                </li>
-              </Link> */}
               <Link to={'/wishlist'}>
                 <li className=' relative'>
                   <IoMdHeartEmpty />
@@ -171,9 +208,27 @@ const MainHeader = () => {
             <FaBarsStaggered />
           </button>
         </div>
-
-        <div className='mobileSearch container mx-auto px-4 w-full my-2 py-2 lg:hidden'>
-          <input className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none' type='text' placeholder='Search Product' />
+        <div className='mobileSearch container relative mx-auto px-4 w-full my-2 py-2 lg:hidden'>
+          <input onChange={handleSearch} className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none'
+            type='text' placeholder='Search Product'/>
+          {searchResult.length > 0 && (
+            <div className='result absolute left-0 z-50 top-14 w-full px-4 mb-4 bg-white rounded-md shadow-lg max-h-[500px] overflow-y-auto'>
+              {searchResult.map((item) => (
+                <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }} onClick={() => setSearchResult([])} key={item.id}>
+                  <div className='flex gap-3 mb-2 items-center'>
+                    <img className='w-20' src={item.image[0]} alt='' />
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>
+                        {currency}
+                        {item.price}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Sidebar Menu */}

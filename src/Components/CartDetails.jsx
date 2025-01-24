@@ -26,6 +26,14 @@ const CartDetails = () => {
   const handleDecreament =(index)=>{
     dispatch(decreament(index))
   }
+
+  let sum = 0;
+  for (let i = 0; i < cartData.length; i++) {
+    let item = cartData[i]
+    sum +=(item.price * item.qty)
+    
+  }
+  
   return (
     <>
       { cartData.length > 0 ?
@@ -62,31 +70,33 @@ const CartDetails = () => {
                   <button onClick={()=>handleIncreament(index)} className='px-2  text-black'>+</button>
                 </div>
               </div>
-              <div className='w-1/5 hidden lg:flex justify-center text-base md:text-lg'>$670.88</div>
+              <div className='w-1/5 hidden lg:flex justify-center text-base md:text-lg'>{currency} {item.qty * item.price}</div>
             </div>
           ))}
         </div>
         {/* Cart Total */}
         <div className='cartTotals w-full flex flex-col md:flex-row gap-4'>
           <div className=' w-full md:w-3/5 '>
+            <Link to={'/shop'}>
             <button className='text-lg border px-4 py-2 my-4 flex gap-4 items-center md:text-xl'> <FaArrowLeft/> Continue Shopping</button>
+            </Link>
           </div>
           <div className=' w-full  my-4 md:w-2/5'>
             <h2 className='text-xl font-medium md:text-3xl'>Cart Totals</h2>
             <div className='w-full h-1 bg-gray-300'></div>
             <div className='flex justify-between my-4 md:text-lg font-medium'>
               <p>Subtotal</p>
-              <p>$4500.20</p>
+              <p>{currency}{sum}</p>
             </div>
             <hr />
             <div className='flex justify-between my-4 md:text-lg font-medium'>
               <p>Shipping</p>
-              <p>$10</p>
+              <p>Calculate when Checkout</p>
             </div>
             <hr />
             <div className='flex justify-between my-4 md:text-lg font-medium'>
               <p>Grand Total</p>
-              <p>$100.99</p>
+              <p>{currency}{sum}</p>
             </div>
             <hr />
             <button className='my-4 w-full border py-3 font-medium rounded-md bg-black text-white md:text-xl'>Procced To Checkout</button>

@@ -12,3 +12,6 @@ body {
 ::-webkit-scrollbar{
   display: none;
 }
+::-webkit-inner-spin-button{
+  display: none;
+}

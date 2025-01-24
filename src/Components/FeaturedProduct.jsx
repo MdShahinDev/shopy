@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IoIosGitCompare, IoMdHeartEmpty } from 'react-icons/io';
+import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import Slider from 'react-slick';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
 import Modal from '../Reusable/Modal';
-
+import { addToWish } from './Slices/wishListSlice';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 const FeaturedProduct = () => {
   const settings = {
     dots: true,
@@ -42,7 +44,9 @@ const FeaturedProduct = () => {
   const { currency } = useContext(ShopContext);
   const [featuredProduct, setFeaturedProduct] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedProductId, setSelectedProductId] = useState(null);
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const wishlist = useSelector((state) => state.wishItemManager.wishItems);
+  const wishid = wishlist.map((item) => item.id);
 
   useEffect(() => {
     setFeaturedProduct(products.slice(8, 16));
@@ -56,6 +60,11 @@ const FeaturedProduct = () => {
     setIsModalOpen(false);
     setSelectedProductId(null);
   };
+  const dispatch = useDispatch();
+  const handleAddToWish = (item) => {
+    dispatch(addToWish(item));
+    toast.success('Addes To Wishlist');
+  };
   return (
     <>
       <div className='slider my-8 overflow-hidden'>
@@ -68,9 +77,14 @@ const FeaturedProduct = () => {
                     <img className='w-full transition-all duration-300 hover:shadow-lg' src={item.image[0]} alt='' />
                   </Link>
                   <div className='quickPanel absolute flex flex-col gap-4 top-8 left-8 text-lg lg:text-xl opacity-100 lg:opacity-0 lg:-translate-x-5 transition-all duration-300 lg:group-hover:opacity-100 lg:group-hover:translate-x-4'>
-                    {/* <IoIosGitCompare className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /> */}
-                    <IoMdHeartEmpty className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
-                    <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' onClick={() => handleOpenModal(item.id)}/>
+                    {wishid.includes(item.id) ? (
+                      <Link to={'/wishlist'}>
+                        <IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
+                      </Link>
+                    ) : (
+                      <IoMdHeartEmpty onClick={() => handleAddToWish(item)} className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
+                    )}
+                    <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' onClick={() => handleOpenModal(item.id)} />
                   </div>
                   <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }}>
                     <h2 className='text-lg font-semibold text-center text-gray-700 hover:text-gray-900 md:text-xl py-4'>{item.name}</h2>
