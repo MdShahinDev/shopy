@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
+import {  IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
@@ -15,10 +15,9 @@ const TopSellingProduct = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
   const dispatch = useDispatch();
-  const wishlist = useSelector((state)=> state.wishItemManager.wishItems);
-  const wishid =wishlist.map((item)=>item.id);
-  
-  
+  const wishlist = useSelector((state) => state.wishItemManager.wishItems);
+  const wishid = wishlist.map((item) => item.id);
+
   useEffect(() => {
     setTopSellingProduct(products.slice(0, 8));
   }, []);
@@ -32,10 +31,10 @@ const TopSellingProduct = () => {
     setIsModalOpen(false);
     setSelectedProductId(null);
   };
-  const handleAddToWish = (item)=>{
-    dispatch(addToWish(item))
+  const handleAddToWish = (item) => {
+    dispatch(addToWish(item));
     toast.success('Addes To Wishlist');
-  }
+  };
   return (
     <>
       <div className='section container mx-auto px-4 my-8 lg:px-0'>
@@ -48,10 +47,13 @@ const TopSellingProduct = () => {
                 </Link>
 
                 <div className='quickPanel absolute flex flex-col gap-4 top-8 left-8 text-lg lg:text-xl opacity-100 lg:opacity-0 lg:-translate-x-5 transition-all duration-300 lg:group-hover:opacity-100 lg:group-hover:translate-x-4'>
-                  {/* <IoIosGitCompare className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /> */}
-                  {
-                   wishid.includes(item.id) ? <Link to={'/wishlist'}><IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' /></Link>:<IoMdHeartEmpty onClick={()=>handleAddToWish(item)} className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
-                  }
+                  {wishid.includes(item.id) ? (
+                    <Link to={'/wishlist'}>
+                      <IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
+                    </Link>
+                  ) : (
+                    <IoMdHeartEmpty onClick={() => handleAddToWish(item)} className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />
+                  )}
                   <MdOutlineRemoveRedEye className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' onClick={() => handleOpenModal(item.id)} />
                 </div>
                 <Link to={`/product/${item.name.toLowerCase().replaceAll(' ', '-')}`} state={{ id: item.id }}>

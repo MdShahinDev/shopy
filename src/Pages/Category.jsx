@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PageHeader from '../Components/PageHeader';
-import productimg from '../assets/p_img1.png';
-import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
+import {  IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { IoMdClose } from 'react-icons/io';
 import { LuTrash2 } from 'react-icons/lu';
 import { useDispatch, useSelector } from 'react-redux';
 import { ShopContext } from '../Context/ShopContext';

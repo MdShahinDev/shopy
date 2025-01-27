@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
-import { IoIosGitCompare, IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
+import {  IoMdHeartEmpty, IoMdClose } from 'react-icons/io';
 import { IoBagOutline, IoHomeOutline } from 'react-icons/io5';
 import { MdLogin } from 'react-icons/md';
-import { FaRegCircleUser, FaBarsStaggered } from 'react-icons/fa6';
+import {  FaBarsStaggered } from 'react-icons/fa6';
 import { CiShop } from 'react-icons/ci';
 import { useSelector } from 'react-redux';
 import { ShopContext } from '../Context/ShopContext';
@@ -20,15 +20,7 @@ const MainHeader = () => {
     document.body.style.overflow = visible ? 'auto' : 'hidden';
   };
   let [searchResult, setSearchResult] = useState([]);
-  // const handleSearch = (e) => {
-  //   let searchProduct = products.filter((item) =>
-  //     item.name.toLowerCase().startsWith(e.target.value.toLowerCase())
-  //   );
-  //   setSearchResult(searchProduct);
-  //   if (e.target.value == "") {
-  //     setSearchResult([]);
-  //   }
-  // };
+  
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     const searchProduct = products.filter((item) => item.name.toLowerCase().includes(searchTerm));
@@ -209,8 +201,12 @@ const MainHeader = () => {
           </button>
         </div>
         <div className='mobileSearch container relative mx-auto px-4 w-full my-2 py-2 lg:hidden'>
-          <input onChange={handleSearch} className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none'
-            type='text' placeholder='Search Product'/>
+          <input
+            onChange={handleSearch}
+            className='w-full border py-2 px-2 text-base text-gray-600 border-gray-300 rounded-md focus:ring-0 focus:outline-none'
+            type='text'
+            placeholder='Search Product'
+          />
           {searchResult.length > 0 && (
             <div className='result absolute left-0 z-50 top-14 w-full px-4 mb-4 bg-white rounded-md shadow-lg max-h-[500px] overflow-y-auto'>
               {searchResult.map((item) => (

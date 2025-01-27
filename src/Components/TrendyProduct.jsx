@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import productimg from '../assets/p_img1.png';
-import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
+import {  IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
@@ -45,7 +44,6 @@ const TrendyProduct = () => {
                 <img className='w-full transition-all duration-300 hover:shadow-lg' src={item.image[0]} alt='' />
               </Link>
               <div className='quickPanel flex gap-4 justify-center mt-4'>
-                
                 {wishid.includes(item.id) ? (
                   <Link to={'/wishlist'}>
                     <IoIosHeart className='cursor-pointer transition-all duration-300 hover:text-red-500 text-xl' />

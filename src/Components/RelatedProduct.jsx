@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SectionHeader from '../Reusable/SectionHeader';
-import productimg from '../assets/p_img1.png';
 import { ShopContext } from '../Context/ShopContext';
 import { Link } from 'react-router-dom';
 const RelatedProduct = ({ category, subCategory }) => {
@@ -14,7 +13,7 @@ const RelatedProduct = ({ category, subCategory }) => {
       productCopy = productCopy.filter((item) => subCategory == item.subCategory);
       setRelatedProduct(productCopy.slice(0, 5));
     }
-  });
+  },[products]);
   return (
     <div className='my-24'>
       <div className='text-center text-3xl py-2'>

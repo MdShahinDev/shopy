@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
+import { IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import Slider from 'react-slick';
 import { ShopContext } from '../Context/ShopContext';

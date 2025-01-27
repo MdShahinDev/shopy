@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import productimg from '../assets/p_img1.png';
 import { assets } from '../assets/assets';
 import RelatedProduct from '../Components/RelatedProduct';
 import { Link, useLocation } from 'react-router-dom';
@@ -16,10 +15,10 @@ const Product = () => {
   const { id } = location.state || {};
   const singleProduct = products.find((item) => item.id === id);
   const [image, setImage] = useState('');
-  const [size,setSize] = useState('');
-  const wishlist = useSelector((state)=>state.wishItemManager.wishItems);
+  const [size, setSize] = useState('');
+  const wishlist = useSelector((state) => state.wishItemManager.wishItems);
   const isProductInWishlist = wishlist.some((product) => product.id === id);
-  
+
   useEffect(() => {
     if (singleProduct) {
       setImage(singleProduct.image[0]);
@@ -30,20 +29,19 @@ const Product = () => {
 
   const handleAddToCart = (item) => {
     if (!size || size.trim() === '') {
-      toast.error('Select Size'); 
-      return; 
+      toast.error('Select Size');
+      return;
     }
     const product = { ...item, qty: 1, selectedSize: size };
-    console.log(product); // Debugging to check the product object
-  
-    dispatch(addToCart(product)); // Add to cart
-    toast.success('Added To Cart'); // Show success toast
+
+    dispatch(addToCart(product));
+    toast.success('Added To Cart');
   };
-  const handleAddToWish =(item)=>{    
-    dispatch(addToWish(item))
+  const handleAddToWish = (item) => {
+    dispatch(addToWish(item));
     toast.success('Addes To Wishlist');
-  }
-  
+  };
+
   return (
     <>
       <div className='container mx-auto px-4 lg:px-0'>
@@ -55,7 +53,7 @@ const Product = () => {
             <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
               <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
                 {singleProduct.image.map((item, index) => (
-                  <img onClick={()=>setImage(item)} key={index} src={item} alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
+                  <img onClick={() => setImage(item)} key={index} src={item} alt='' className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' />
                 ))}
               </div>
               <div className='w-full sm:w-[80%]'>
@@ -81,20 +79,28 @@ const Product = () => {
                 <p>Select Size</p>
                 <div className='flex gap-2'>
                   {singleProduct.sizes.map((item, index) => (
-                    <button onClick={()=>setSize(item)} key={index} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-black': ''}`}>{item}</button>
+                    <button onClick={() => setSize(item)} key={index} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-black' : ''}`}>
+                      {item}
+                    </button>
                   ))}
                 </div>
               </div>
               <div className='button flex gap-4'>
-              <button onClick={()=>handleAddToCart(singleProduct)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
-              {
-                isProductInWishlist ? <Link to={'/wishlist'}> <button className=' text-black px-8 py-3 border text-sm'>GO TO WISHLIST</button></Link> :<button onClick={()=>handleAddToWish(singleProduct)} className=' text-black px-8 py-3 border text-sm'>ADD TO WISHLIST</button>
-              }
-              
-              
-
+                <button onClick={() => handleAddToCart(singleProduct)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>
+                  ADD TO CART
+                </button>
+                {isProductInWishlist ? (
+                  <Link to={'/wishlist'}>
+                    {' '}
+                    <button className=' text-black px-8 py-3 border text-sm'>GO TO WISHLIST</button>
+                  </Link>
+                ) : (
+                  <button onClick={() => handleAddToWish(singleProduct)} className=' text-black px-8 py-3 border text-sm'>
+                    ADD TO WISHLIST
+                  </button>
+                )}
               </div>
-              
+
               <hr className='mt-8 sm:w-4/5' />
               <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
                 <p>SKU: TH45HD</p>
@@ -123,7 +129,7 @@ const Product = () => {
             </div>
           </div>
           {/* Related Product */}
-          {/* <RelatedProduct category={singleProduct.category} subCategory= {singleProduct.subCategory} /> */}
+          <RelatedProduct category={singleProduct.category} subCategory= {singleProduct.subCategory} />
         </div>
       </div>
     </>

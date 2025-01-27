@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { LuSettings2 } from 'react-icons/lu';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import productimg from '../assets/p_img1.png';
-import { IoIosGitCompare, IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
+import { IoMdHeartEmpty, IoIosHeart } from 'react-icons/io';
 import { MdOutlineRemoveRedEye } from 'react-icons/md';
 import { ShopContext } from '../Context/ShopContext';
 import Modal from '../Reusable/Modal';
@@ -35,7 +34,6 @@ const ShopPage = () => {
     let filteredProduct = products.filter((item) => item.subCategory === subCategory);
     setSubCategoryItem(filteredProduct);
   };
-  // pagignation
 
   let [currentPage, setCurrentPage] = useState(1);
 
