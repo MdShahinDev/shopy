@@ -24,10 +24,12 @@ import ReturnPolicy from "./Pages/ReturnPolicy";
 import DeliveryPolicy from "./Pages/DeliveryPolicy";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from "./ScrollToTop";
 const App = () => {
   return (
     <div>
       <ToastContainer autoClose={2000}/>
+      <ScrollToTop/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
