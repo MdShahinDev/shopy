@@ -4,11 +4,15 @@ import { IoMdClose } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { ShopContext } from '../Context/ShopContext';
 import { deleteCartItem, increament, decreament } from './Slices/cartSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const CartDetails = () => {
   const { currency } = useContext(ShopContext);
+  const navigate = useNavigate();
+  const handleCheckout = ()=>{
+    navigate('/checkout');
+  } 
   let cartData = useSelector((state) => state.cartItemManager.cartItems);
   let totalqty = 0;
   for (let i = 0; i < cartData.length; i++) {
@@ -118,7 +122,7 @@ const CartDetails = () => {
                   </p>
                 </div>
                 <hr />
-                <button className='my-4 w-full border py-3 font-medium rounded-md bg-black text-white md:text-xl'>Procced To Checkout</button>
+                <button onClick={handleCheckout} className='my-4 w-full border py-3 font-medium rounded-md bg-black text-white md:text-xl'>Procced To Checkout</button>
               </div>
             </div>
           </div>

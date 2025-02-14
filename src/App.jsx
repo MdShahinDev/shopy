@@ -5,7 +5,6 @@ import About from "./Pages/About";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
 import Compare from "./Pages/Compare";
-import Confirm from "./Pages/Confirm";
 import Contact from "./Pages/Contact";
 import Faqs from "./Pages/Faqs";
 import Login from "./Pages/Login";
@@ -25,6 +24,7 @@ import DeliveryPolicy from "./Pages/DeliveryPolicy";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./ScrollToTop";
+import ThankYou from "./Pages/ThankYou";
 const App = () => {
   return (
     <div>
@@ -37,7 +37,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/compare" element={<Compare />} />
-        <Route path="/confirm" element={<Confirm />} />
+        <Route path="/thank-you" element={<ThankYou/>} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/login" element={<Login />} />

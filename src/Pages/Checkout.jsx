@@ -1,8 +1,13 @@
 import React from 'react'
+import PageHeader from '../Components/PageHeader'
+import CheckoutSection from '../Components/CheckoutSection'
 
 const Checkout = () => {
   return (
-    <div>Checkout</div>
+    <>
+      <PageHeader pagename='Checkout' pagename2='Checkout'/>
+      <CheckoutSection/>
+    </>
   )
 }
 
