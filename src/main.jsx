@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import ShopContextProvider from './Context/ShopContext.jsx';
 import store from './store.js';
 import { Provider } from 'react-redux';
+import firebaseConfig from './autthentication/firebase.config.js';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>

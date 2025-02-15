@@ -10,7 +10,12 @@ const ThankYou = () => {
   const { currency, delivery_fee } = useContext(ShopContext);
   let grandTotal = cartTotal + delivery_fee;
   console.log(checkoutData);
-  
+  const today = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const orderNumber = Math.floor(100 + Math.random() * 900);
   return (
 
     <>
@@ -25,15 +30,15 @@ const ThankYou = () => {
             <div className="info md:flex justify-between">
               <div className="orderNumber mb-2 py-1 border-b md:border-none md:border-r">
                 <h2 className='text-xl mb-2'>Order number:</h2>
-                <p className='text-lg font-semibold'>334</p>
+                <p className='text-lg font-semibold'>{orderNumber}</p>
               </div>
               <div className="date mb-2 py-1 border-b md:border-b-0">
                 <h2 className='text-xl mb-2'>Date:</h2>
-                <p className='text-lg font-semibold'>February 15, 2025</p>
+                <p className='text-lg font-semibold'>{today}</p>
               </div>
               <div className="amount mb-2 py-1 border-b md:border-none ">
                 <h2 className='text-xl mb-2'>Total:</h2>
-                <p className='text-lg font-semibold'>1800</p>
+                <p className='text-lg font-semibold'>{currency}{grandTotal}</p>
               </div>
               <div className="paymentmethod mb-2 py-1 border-b md:border-none">
                 <h2 className='text-xl mb-2'>Payment Method:</h2>
