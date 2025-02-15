@@ -14,10 +14,23 @@ const CheckoutSection = () => {
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    paymentMethod: 'cod',
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   // Function to check required fields
   const handleField = () => {
     let newErrors = {};
-
+    
     // Get all required fields
     const fields = document.querySelectorAll('input[required]');
     fields.forEach(input => {
@@ -30,10 +43,13 @@ const CheckoutSection = () => {
 
     if (Object.keys(newErrors).length === 0) {
       // Proceed with order placement logic
+      localStorage.setItem('checkoutData', JSON.stringify(formData));
       navigate('/thank-you');
     }
   };
-
+  
+  console.log(formData);
+  
   return (
     <>
       {cartData.length > 0 ? (
@@ -46,7 +62,7 @@ const CheckoutSection = () => {
                 {/* Email Address */}
                 <div className="input-field flex flex-col gap-1 mt-4">
                   <label>Email Address</label>
-                  <input className="w-full border p-2 outline-none rounded-sm" type="email" name="email" placeholder="Your Email Address" required />
+                  <input className="w-full border p-2 outline-none rounded-sm" type="email" name="email" placeholder="Your Email Address" value={formData.email} onChange={handleChange} required />
                   {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                 </div>
 
@@ -54,12 +70,12 @@ const CheckoutSection = () => {
                 <div className="input-field flex flex-col md:flex-row gap-4 mt-4">
                   <div className="w-full md:w-1/2">
                     <label>First Name</label>
-                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="firstName" placeholder="Your First Name" required />
+                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="Your First Name" required />
                     {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName}</p>}
                   </div>
                   <div className="w-full md:w-1/2">
                     <label>Last Name</label>
-                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="lastName" placeholder="Your Last Name" required />
+                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Your Last Name" required />
                     {errors.lastName && <p className="text-red-500 text-sm">{errors.lastName}</p>}
                   </div>
                 </div>
@@ -67,7 +83,7 @@ const CheckoutSection = () => {
                 {/* Address */}
                 <div className="input-field flex flex-col gap-1 mt-4">
                   <label>Address</label>
-                  <input className="w-full border p-2 outline-none rounded-sm" type="text" name="address" placeholder="Your Address" required />
+                  <input className="w-full border p-2 outline-none rounded-sm" type="text" name="address" value={formData.address} onChange={handleChange} placeholder="Your Address" required />
                   {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
                 </div>
 
@@ -75,12 +91,12 @@ const CheckoutSection = () => {
                 <div className="input-field flex flex-col md:flex-row gap-4 mt-4">
                   <div className="w-full md:w-1/2">
                     <label>City</label>
-                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="city" placeholder="Your City" required />
+                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Your City" required />
                     {errors.city && <p className="text-red-500 text-sm">{errors.city}</p>}
                   </div>
                   <div className="w-full md:w-1/2">
                     <label>State</label>
-                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="state" placeholder="Your State" required />
+                    <input className="w-full border p-2 outline-none rounded-sm" type="text" name="state" value={formData.state} onChange={handleChange} placeholder="Your State" required />
                     {errors.state && <p className="text-red-500 text-sm">{errors.state}</p>}
                   </div>
                 </div>
@@ -88,7 +104,7 @@ const CheckoutSection = () => {
                 {/* Postal Code */}
                 <div className="input-field flex flex-col gap-1 mt-4">
                   <label>Postal Code</label>
-                  <input className="w-full border p-2 outline-none rounded-sm" type="text" name="postalCode" placeholder="Your Postal Code" required />
+                  <input className="w-full border p-2 outline-none rounded-sm" type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} placeholder="Your Postal Code" required />
                   {errors.postalCode && <p className="text-red-500 text-sm">{errors.postalCode}</p>}
                 </div>
               </form>
